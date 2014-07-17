@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onEnterFrame()
+
+
+
+local ship=this.getObject()
+
+
+if(not this.nShipDieing())then
+
+if((this.thrustOff())and(this.forwardThrust()>0))then
+this.forwardThrust(this.forwardThrust()-0.003)
+end
+
+if(this.forwardThrust()>0)then
+
+object.translate(ship,0,.3,0,object.kLocalSpace)
+end
+
+
+object.rotate(ship,0,this.RotationPosition()*1.5,0,object.kGlobalSpace)
+end
+
+
+
+if(this.nFiring())then
+
+
+local s=application.getCurrentUserScene()
+local b=scene.createRuntimeObject(s,"Bullet")
+
+
+
+object.addAIModel(b,"AsteroidsBulletAI")
+object.sendEvent(b,"AsteroidsBulletAI","onSetup",this.getObject())
+
+end
+
+end

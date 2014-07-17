@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+function AsteroidAI.onDeleteSelf()
+
+
+
+scene.destroyRuntimeObject(application.getCurrentUserScene(),this.getObject())
+
+end

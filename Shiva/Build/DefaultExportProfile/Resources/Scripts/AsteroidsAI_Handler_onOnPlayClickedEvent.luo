@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+function AsteroidsAI.onOnPlayClickedEvent()
+
+
+
+this.PLAYING()
+
+
+end

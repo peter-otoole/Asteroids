@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+function AsteroidsBulletAI.onSetup(hShip)
+
+
+
+local b=this.getObject()
+
+
+object.matchTranslation(b,hShip,object.kGlobalSpace)
+object.matchRotation(b,hShip,object.kGlobalSpace)
+
+object.setScale(b,0.3,0.3,0.3)
+
+
+local r=object.getBoundingSphereRadius(b)
+dynamics.createSphereBody(b,r*0.5)
+dynamics.setGuardBox(b,-1000,0,-1000,1000,0,1000)
+dynamics.enableGuardBox(b,true)
+dynamics.enableGravity(b,false)
+dynamics.enableDynamics(b,true)
+
+
+dynamics.setLinearVelocity(b,0,40,0,object.kLocalSpace)
+
+dynamics.setAngularDamping(b,0)
+dynamics.setLinearDamping(b,0)
+
+
+this.postEvent(0.2,"onCheckScreenEdge")
+
+
+
+end

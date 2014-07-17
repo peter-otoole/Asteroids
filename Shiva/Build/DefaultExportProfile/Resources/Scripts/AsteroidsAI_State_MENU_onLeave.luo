@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+function AsteroidsAI.MENU_onLeave()
+
+
+local hUser=application.getCurrentUser()
+hud.destroyTemplateInstance(hUser,"MenuHud")
+
+
+end

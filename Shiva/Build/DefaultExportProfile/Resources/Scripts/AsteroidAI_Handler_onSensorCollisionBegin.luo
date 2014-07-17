@@ -1,0 +1,97 @@
+
+
+
+
+
+
+
+function AsteroidAI.onSensorCollisionBegin(nSensorID,hTargetObject,nTargetSensorID)
+
+
+
+local o=this.getObject()
+local hUser=application.getCurrentUser()
+local x,y,z=object.getTranslation(o,object.kGlobalSpace)
+local vx,vy,vz=dynamics.getLinearVelocity(o,object.kGlobalSpace)
+local hScene=application.getCurrentUserScene()
+local sx,sy,sz=object.getScale(o)
+local size=(sx+sy+sz)/3
+local numberAsteroids=application.getCurrentUserAIVariable("AsteroidsAI","numberOfAsteroids")
+
+
+
+if(nTargetSensorID==10)then
+
+log.message(numberAsteroids)
+
+
+object.sendEvent(hTargetObject,"AsteroidsBulletAI","onDelete")
+
+
+local score=application.getCurrentUserAIVariable("AsteroidsAI","nUserScore")
+score=(score+50)
+application.setCurrentUserAIVariable("AsteroidsAI","nUserScore",score)
+
+
+local hUser=application.getCurrentUser()
+local hScore=hud.getComponent(hUser,"PayingHud.UserScore")
+hud.setLabelText(hScore,string.format("Score: %d",score))
+
+
+if(size>0.07)then
+local numPieces
+
+if(size>1.1)then
+numPieces=3
+else
+numPieces=2
+end
+
+
+local pieceSize=size/numPieces
+
+
+for i=1,numPieces do
+
+
+numberAsteroids=(numberAsteroids+1)
+
+local a=scene.createRuntimeObject(hScene,"asteroid1")
+local localVelX=math.random(-1,1)
+local localVelZ=math.random(-1,1)
+
+object.setTranslation(a,x+localVelX,0,z+localVelZ,object.kGlobalSpace)
+object.setScale(a,math.random(pieceSize*0.8,pieceSize*1.2),math.random(pieceSize*0.8,pieceSize*1.2),
+math.random(pieceSize*0.8,pieceSize*1.2))
+
+object.addAIModel(a,"AsteroidAI")
+object.postEvent(a,0.05,"AsteroidAI","onSetVelocity",vx+localVelX,vz+localVelZ)
+end
+
+scene.destroyRuntimeObject(hScene,o)
+else
+
+this.postEvent(.5,"onDeleteSelf")
+
+
+dynamics.setLinearVelocity(o,0,0,0,object.kGlobalSpace)
+dynamics.setAngularVelocity(o,0,0,0,object.kGlobalSpace)
+object.setScale(o,0.00001,0.00001,0.00001)
+sfx.startParticleEmitterAt(o,0)
+end
+
+
+
+numberAsteroids=(numberAsteroids-1)
+application.setCurrentUserAIVariable("AsteroidsAI","numberOfAsteroids",numberAsteroids)
+
+
+if(numberAsteroids==0)then
+local var=application.getCurrentUser()
+user.postEvent(var,2,"AsteroidsAI","onStartNextLevel")
+end
+end
+
+
+
+end

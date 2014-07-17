@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onSetRotation(amount)
+
+
+
+this.RotationPosition(amount)
+
+
+end

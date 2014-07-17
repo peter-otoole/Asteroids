@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+function AsteroidsAI.onGoToGameOver()
+
+
+
+this.GameOver()
+
+
+end

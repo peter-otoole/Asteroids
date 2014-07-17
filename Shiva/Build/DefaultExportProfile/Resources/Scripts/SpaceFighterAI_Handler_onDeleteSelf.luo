@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onDeleteSelf()
+
+
+
+this.nShipDieing(false)
+scene.destroyRuntimeObject(application.getCurrentUserScene(),this.getObject())
+
+
+end

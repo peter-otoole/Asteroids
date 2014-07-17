@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onSetThrust(thrustValue)
+
+
+local ship=this.getObject()
+
+
+
+if(not this.nShipDieing())then
+
+if(thrustValue)then
+this.forwardThrust(0.2)
+this.thrustOff(false)
+sfx.startParticleEmitterAt(ship,0)
+else
+this.thrustOff(true)
+sfx.stopParticleEmitterAt(ship,0)
+end
+end
+
+end

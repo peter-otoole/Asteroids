@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+--  State............ : PLAYING
+--  Author........... : 
+--  Description...... : 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+function AsteroidsAI.PLAYING_onEnter ( )
+--------------------------------------------------------------------------------
+	
+    this.nPlayingState ( true )
+    local hUser = application.getCurrentUser ( )
+    hud.newTemplateInstance(hUser, "PayingHud", "PayingHud")
+    
+    this.nCurrentGameLevel(0)
+    this.nUserLives(3)
+    this.nUserScore(0)
+    this.numberOfAsteroids(0)
+	this.StartNextLevel ()
+    this.createPlayerShip()
+
+    
+--------------------------------------------------------------------------------
+end
+--------------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onEnableSpawnProtection()
+
+
+
+this.vunerable(false)
+sfx.startParticleEmitterAt(this.getObject(),2)
+
+
+end

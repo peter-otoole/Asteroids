@@ -1,0 +1,34 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onInit()
+
+
+
+local ship=this.getObject()
+
+
+sfx.stopParticleEmitterAt(ship,0)
+sfx.stopParticleEmitterAt(ship,1)
+sfx.stopParticleEmitterAt(ship,2)
+
+sfx.startParticleEmitterAt(ship,2)
+
+dynamics.createSphereBody(ship,1)
+dynamics.enableGravity(ship,false)
+dynamics.enableDynamics(ship,true)
+dynamics.enableGravity(ship,false)
+dynamics.setGuardBox(ship,-1000,0,-1000,1000,0,1000)
+dynamics.enableGuardBox(ship,true)
+
+
+this.postEvent(math.random(0.02,0.2),"onCheckScreenEdge")
+
+this.postEvent(4,"onDisableSpawnProtection")
+
+
+end

@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+--  Handler.......... : onEnterFrame
+--  Author........... : 
+--  Description...... : 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+function MarsRotatorMainAI.onEnterFrame (  )
+--------------------------------------------------------------------------------
+	
+local s = application.getCurrentUserScene()
+local d = scene.getTaggedObject(s, "deimos")
+local p = scene.getTaggedObject(s, "phobos")
+
+object.rotateAround(d, 0, 0, 0, 0,1.25,0, object.kGlobalSpace) 
+object.rotateAround(p, 0, 0, 0, 0,1,0, object.kGlobalSpace)
+
+
+local RanNum = math.random(0, 40)
+
+if( RanNum > 39 )then 
+local ast = scene.createRuntimeObject(s, "asteroid1")
+object.addAIModel(ast, "AsteroidAI")
+object.setTranslation(ast, math.random(-10, 10), math.random(-10, 10), math.random(-10, 10), object.kGlobalSpace)
+object.setScale(ast, 0.01, 0.01, 0.01)
+end
+    
+local c = application.getCurrentUserActiveCamera ( )
+
+object.translate ( c, this.nCamXVolocity ( ), 0, this.nCamYVolocity ( ), object.kGlobalSpace)   
+
+--------------------------------------------------------------------------------
+end
+--------------------------------------------------------------------------------

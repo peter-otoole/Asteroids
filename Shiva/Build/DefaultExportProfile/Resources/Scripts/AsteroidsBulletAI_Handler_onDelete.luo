@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+function AsteroidsBulletAI.onDelete()
+
+
+scene.destroyRuntimeObject(application.getCurrentUserScene(),this.getObject())
+
+
+end

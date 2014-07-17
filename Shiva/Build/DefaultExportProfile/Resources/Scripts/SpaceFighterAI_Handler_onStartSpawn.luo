@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+function SpaceFighterAI.onStartSpawn()
+
+
+this.spawnProtectionCounter(200)
+
+
+end

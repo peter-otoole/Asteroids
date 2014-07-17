@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+function AsteroidsAI.onRespawnPlayerShip()
+
+
+
+this.createPlayerShip()
+
+
+
+end

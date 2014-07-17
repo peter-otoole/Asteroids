@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+function AsteroidsAI.onHideText()
+
+
+if(this.nPlayingState())then
+
+local hUser=application.getCurrentUser()
+local hNextLevel=hud.getComponent(hUser,"PayingHud.nextLevel")
+hud.setLabelText(hNextLevel,"")
+end
+
+
+end

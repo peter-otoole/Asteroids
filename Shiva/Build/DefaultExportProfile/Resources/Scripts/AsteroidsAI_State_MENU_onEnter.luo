@@ -1,0 +1,18 @@
+
+
+
+
+
+
+
+function AsteroidsAI.MENU_onEnter()
+
+
+local hUser=application.getCurrentUser()
+
+hud.newTemplateInstance(hUser,"MenuHud","MenuHud")
+
+this.nEndGameState(false)
+
+
+end

@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+--  Handler.......... : onKeyboardKeyUp
+--  Author........... : 
+--  Description...... : 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+function SpaceFighterAI.onKeyboardKeyUp ( kKeyCode )
+--------------------------------------------------------------------------------
+	
+    if(kKeyCode==input.kKeyUp)then
+    
+        this.yVelocityAdder ( (this.yVelocityAdder ( ) - 0.003) )
+    
+    elseif(kKeyCode==input.kKeyDown)then
+    
+        this.yVelocityAdder ( (this.yVelocityAdder ( ) + 0.003) )
+    
+   -- elseif(kKeyCode==input.kKeyLeft)then
+    
+     --   this.xVelocityAdder ( (this.xVelocityAdder ( ) + 0.003) )
+    
+   -- elseif(kKeyCode==input.kKeyRight)then
+    
+    --    this.xVelocityAdder ( (this.xVelocityAdder ( ) - 0.003) )
+    
+    end
+	
+--------------------------------------------------------------------------------
+end
+--------------------------------------------------------------------------------

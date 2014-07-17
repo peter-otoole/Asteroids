@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+function AsteroidAI.onCheckForEndGame()
+
+
+
+local isEndOfGame=application.getCurrentUserAIVariable("AsteroidsAI","nEndGameState")
+
+
+if(isEndOfGame)then
+scene.destroyRuntimeObject(application.getCurrentUserScene(),this.getObject())
+end
+
+
+this.postEvent(1,"onCheckForEndGame")
+
+end

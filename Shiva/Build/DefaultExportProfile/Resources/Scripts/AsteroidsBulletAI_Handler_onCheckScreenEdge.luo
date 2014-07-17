@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+function AsteroidsBulletAI.onCheckScreenEdge()
+
+
+local b=this.getObject()
+local x,y,z=object.getTranslation(b,object.kGlobalSpace)
+
+
+local minX=application.getCurrentUserAIVariable("AsteroidsAI","nMinX")
+local maxX=application.getCurrentUserAIVariable("AsteroidsAI","nMaxX")
+local minZ=application.getCurrentUserAIVariable("AsteroidsAI","nMinZ")
+local maxZ=application.getCurrentUserAIVariable("AsteroidsAI","nMaxZ")
+
+
+if(x<minX or x>maxX or z<minZ or z>maxZ)then
+scene.destroyRuntimeObject(application.getCurrentUserScene(),b)
+else
+this.postEvent(0.2,"onCheckScreenEdge")
+end
+
+end
